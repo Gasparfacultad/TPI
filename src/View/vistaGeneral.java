@@ -1,8 +1,7 @@
 package View;
 
-import java.util.Scanner;
-
 import Models.Campeonato;
+import java.util.Scanner;
 
 public class vistaGeneral {
     private Scanner scanner;
@@ -56,4 +55,6 @@ public class vistaGeneral {
         System.out.println("2. Listar Partidos Jugados");
         System.out.println("3. Volver al Menú Principal");
     }
+
+    
 }

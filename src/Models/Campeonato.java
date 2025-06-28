@@ -1,12 +1,15 @@
 package Models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Campeonato {
     private String nombre;
     private ArrayList<Equipo> equipos;
     private ArrayList<Partido> partidosJugados;
-
+    private List<Arbitro> arbitros = new ArrayList<>();
+    
+   
     public Campeonato(){
         this.equipos = new ArrayList<>();
         this.partidosJugados = new ArrayList<>();
@@ -60,6 +63,14 @@ public class Campeonato {
         }
     }
 
+    public List<Arbitro> getArbitros() {
+        return arbitros;
+    }
+
+    public void addArbitro(Arbitro arbitro) {
+        arbitros.add(arbitro);
+    }  
+    
     @Override
     public String toString() {
         return "{" +

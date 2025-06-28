@@ -1,6 +1,11 @@
 package Controller;
 
+import java.util.List;
+
+import Models.Arbitro;
 import Models.Campeonato;
+import Models.Equipo;
+import Models.Jugador;
 import View.vistaGeneral;
 
 public class Controlador {
@@ -88,6 +93,17 @@ public class Controlador {
     }
     //logica para gestionar arbitros
 
+    private List<Arbitro> getArbitrosRegistrados() {
+        return campeonato.getArbitros(); 
+    }
+
+    private void crearArbitro() {
+        String nombreArbitro = vista.pedirString("Ingrese el nombre del árbitro: ");
+        Arbitro nuevoArbitro = new Arbitro(nombreArbitro);
+        campeonato.addArbitro(nuevoArbitro);
+        vista.mostrarMensaje("Árbitro '" + nombreArbitro + "' creado exitosamente.");
+    }
+
     private void gestionarPartidos() {
         int opcion;
         do {
@@ -111,4 +127,5 @@ public class Controlador {
     }
     //logica para gestionar partidos
 
-}
+
+}   
