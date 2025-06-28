@@ -78,7 +78,6 @@ public class Controlador {
     private void añadirJugadorAEquipo(){
         
     }
-
     private void gestionarArbitros() {
         int opcion;
         do {
