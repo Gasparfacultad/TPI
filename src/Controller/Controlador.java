@@ -27,7 +27,7 @@ public class Controlador {
                     gestionarPartidos();
                     break;
                 case 4:
-                    vista.mostrarClasificacion(campeonato.getEquiposParticipantes());
+                    vista.mostrarClasificacion(campeonato.getEquipos());
                     break;
                 case 5:
                     vista.mostrarMensaje("Saliendo del programa. ¡Hasta luego!");
@@ -52,7 +52,7 @@ public class Controlador {
                     añadirJugadorAEquipo();
                     break;
                 case 3:
-                    vista.mostrarListaEquipos(campeonato.getEquiposParticipantes());
+                    vista.mostrarListaEquipos(campeonato.getEquipos());
                     break;
                 case 4:
                     verDetallesEquipo();
@@ -74,6 +74,9 @@ public class Controlador {
         Equipo nuevoEquipo = new Equipo(nombre, entrenador);
         campeonato.addEquipo(nuevoEquipo);
         vista.mostrarMensaje("Equipo '" + nombre + "' creado exitosamente.");
+    }
+    private void añadirJugadorAEquipo(){
+        
     }
 
     private void gestionarArbitros() {
