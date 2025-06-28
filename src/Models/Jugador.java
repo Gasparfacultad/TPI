@@ -38,6 +38,11 @@ public class Jugador {
         this.goles = goles;
     }
 
+    // Método para añadir goles
+    public void addGoles(int cantidad) {
+        this.goles += cantidad;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -46,6 +51,4 @@ public class Jugador {
             ", goles='" + getGoles() + "'" +
             "}";
     }
-
-
 }

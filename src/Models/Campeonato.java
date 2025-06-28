@@ -1,17 +1,27 @@
 package Models;
 
+import java.util.ArrayList;
+
 public class Campeonato {
     private String nombre;
-    private Equipo equipo;
-    private Partido partido;
+    private ArrayList<Equipo> equipos;
+    private ArrayList<Partido> partidosJugados;
 
     public Campeonato(){
+        this.equipos = new ArrayList<>();
+        this.partidosJugados = new ArrayList<>();
     }
 
-    public Campeonato(String nombre, Equipo equipo, Partido partido){
+    public Campeonato(String nombre) {
         this.nombre = nombre;
-        this.equipo = equipo;
-        this.partido = partido;
+        this.equipos = new ArrayList<>();
+        this.partidosJugados = new ArrayList<>();
+    }
+
+    public Campeonato(String nombre, ArrayList<Equipo> equipos, ArrayList<Partido> partidosJugados) {
+        this.nombre = nombre;
+        this.equipos = equipos;
+        this.partidosJugados = partidosJugados;
     }
 
     public String getNombre() {
@@ -22,29 +32,40 @@ public class Campeonato {
         this.nombre = nombre;
     }
 
-    public Equipo getEquipo() {
-        return this.equipo;
+    public ArrayList<Equipo> getEquiposParticipantes() {
+        return this.equipos;
     }
 
-    public void setEquipo(Equipo equipo) {
-        this.equipo = equipo;
+    public void setEquiposParticipantes(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
     }
 
-    public Partido getPartido() {
-        return this.partido;
+    public ArrayList<Partido> getPartidosJugados() {
+        return this.partidosJugados;
     }
 
-    public void setPartido(Partido partido) {
-        this.partido = partido;
+    public void setPartidosJugados(ArrayList<Partido> partidosJugados) {
+        this.partidosJugados = partidosJugados;
+    }
+
+    public void addEquipo(Equipo equipo) {
+        if (equipo != null && !this.equipos.contains(equipo)) {
+            this.equipos.add(equipo);
+        }
+    }
+
+    public void addPartido(Partido partido) {
+        if (partido != null && !this.partidosJugados.contains(partido)) {
+            this.partidosJugados.add(partido);
+        }
     }
 
     @Override
     public String toString() {
         return "{" +
             " nombre='" + getNombre() + "'" +
-            ", equipo='" + getEquipo() + "'" +
-            ", partido='" + getPartido() + "'" +
+            ", equipos=" + getEquiposParticipantes().size() + " equipos" +
+            ", partidosJugados=" + getPartidosJugados().size() + " partidos" +
             "}";
     }
-  
 }

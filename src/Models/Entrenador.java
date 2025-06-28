@@ -10,7 +10,6 @@ public class Entrenador {
         this.nombre = nombre;
     }
 
-
     public String getNombre() {
         return this.nombre;
     }
@@ -25,5 +24,4 @@ public class Entrenador {
             " nombre='" + getNombre() + "'" +
             "}";
     }
-
 }

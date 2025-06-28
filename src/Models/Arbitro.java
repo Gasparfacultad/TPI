@@ -7,7 +7,6 @@ public class Arbitro {
     public Arbitro(){
     }
 
-
     public Arbitro(String nombre, int partidosDirigidos) {
         this.nombre = nombre;
         this.partidosDirigidos = partidosDirigidos;
@@ -30,7 +29,6 @@ public class Arbitro {
         this.partidosDirigidos = partidosDirigidos;
     }
 
-
     @Override
     public String toString() {
         return "{" +
@@ -38,5 +36,4 @@ public class Arbitro {
             ", partidosDirigidos='" + getPartidosDirigidos() + "'" +
             "}";
     }
-    
 }
