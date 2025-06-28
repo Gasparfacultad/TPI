@@ -32,7 +32,7 @@ public class Campeonato {
         this.nombre = nombre;
     }
 
-    public ArrayList<Equipo> getEquiposParticipantes() {
+    public ArrayList<Equipo> getEquipos() {
         return this.equipos;
     }
 
@@ -64,7 +64,7 @@ public class Campeonato {
     public String toString() {
         return "{" +
             " nombre='" + getNombre() + "'" +
-            ", equipos=" + getEquiposParticipantes().size() + " equipos" +
+            ", equipos=" + getEquipos().size() + " equipos" +
             ", partidosJugados=" + getPartidosJugados().size() + " partidos" +
             "}";
     }
