@@ -1,5 +1,8 @@
+import Controller.Controlador;
+
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("probando");
+        Controlador controlador = new Controlador();
+        controlador.iniciar();
     }
 }

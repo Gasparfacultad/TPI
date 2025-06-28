@@ -106,13 +106,13 @@ public class Equipo {
     @Override
     public String toString() {
         return "{" +
-            " nombre='" + getNombre() + "'" +
-            ", entrenador='" + (entrenador != null ? entrenador.getNombre() : "N/A") + "'" +
-            ", jugadores=" + getJugadores().size() + " jugadores" +
-            ", partidosJugados='" + getPartidosJugados() + "'" +
-            ", golesA_Favor='" + getGolesA_Favor() + "'" +
-            ", golesEnContra='" + getGolesEnContra() + "'" +
-            ", puntaje='" + getPuntaje() + "'" +
+            " nombre = '" + getNombre() + "'" +
+            ", entrenador = '" + entrenador.getNombre() +
+            ", jugadores = " + getJugadores().size() + " jugadores" +
+            ", partidosJugados = '" + getPartidosJugados() + "'" +
+            ", golesA_Favor = '" + getGolesA_Favor() + "'" +
+            ", golesEnContra = '" + getGolesEnContra() + "'" +
+            ", puntaje = '" + getPuntaje() + "'" +
             "}";
     }
 }
