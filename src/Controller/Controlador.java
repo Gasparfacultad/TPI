@@ -1,6 +1,8 @@
 package Controller;
 
 import Models.Campeonato;
+import Models.Entrenador;
+import Models.Equipo;
 import View.vistaGeneral;
 
 public class Controlador {
@@ -64,7 +66,16 @@ public class Controlador {
         } while (opcion != 5);
     }
     //logica para gestionar equipos
-    
+    private void crearEquipo() {
+        String nombre = vista.pedirString("Ingrese el nombre del equipo: ");
+        String nombreEntrenador = vista.pedirString("Ingrese el nombre del entrenador: ");
+        
+        Entrenador entrenador = new Entrenador(nombreEntrenador);
+        Equipo nuevoEquipo = new Equipo(nombre, entrenador);
+        campeonato.addEquipo(nuevoEquipo);
+        vista.mostrarMensaje("Equipo '" + nombre + "' creado exitosamente.");
+    }
+
     private void gestionarArbitros() {
         int opcion;
         do {

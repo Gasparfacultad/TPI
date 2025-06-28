@@ -1,7 +1,6 @@
 package View;
 
 import java.util.Scanner;
-
 import Models.Campeonato;
 
 public class vistaGeneral {
