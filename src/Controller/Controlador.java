@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Models.Campeonato;
@@ -181,7 +182,7 @@ public class Controlador {
     //logica para gestionar partidos
 
     private void registrarNuevoPartido() {
-        List<Equipo> equipos = campeonato.getEquipos();
+        ArrayList<Equipo> equipos = campeonato.getEquipos();
 
         if (equipos.size() < 2) {
             vista.mostrarMensaje("No hay suficientes equipos registrados para jugar un partido.");
@@ -213,8 +214,8 @@ public class Controlador {
     int golesVisitante = vista.pedirInt("Ingrese los goles del equipo " + visitante.getNombre() + ": ");
 
     // Crear y registrar el partido
-    Partido partido = new Partido(local, visitante, golesLocal, golesVisitante);
-    campeonato.agregarPartido(partido);
+    Partido partido = new Partido(null, local, visitante, golesLocal, golesVisitante);
+    campeonato.addPartido(partido);
 
     vista.mostrarMensaje("Partido registrado correctamente.");
     }
