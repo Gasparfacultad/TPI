@@ -1,7 +1,10 @@
 package View;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import Models.Campeonato;
+import Models.Equipo;
 
 public class vistaGeneral {
     private Scanner scanner;
@@ -55,4 +58,16 @@ public class vistaGeneral {
         System.out.println("2. Listar Partidos Jugados");
         System.out.println("3. Volver al Menú Principal");
     }
+    
+    public void mostrarListaEquipos(ArrayList<Equipo> equipos) {
+        System.out.println("\n--- Lista de Equipos ---");
+        if (equipos.isEmpty()) {
+            System.out.println("No hay equipos registrados.");
+            return;
+        }
+        for (int i = 0; i < equipos.size(); i++) {
+            System.out.println((i + 1) + ". " + equipos.get(i).getNombre());
+        }
+    }
+
 }
