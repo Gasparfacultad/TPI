@@ -162,5 +162,6 @@ public class Controlador {
     campeonato.agregarPartido(partido);
 
     vista.mostrarMensaje("Partido registrado correctamente.");
+    vista.mostrarMensaje("hola");
     }
 }
