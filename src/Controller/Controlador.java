@@ -100,11 +100,7 @@ public class Controlador {
         } while (opcion != 3);
     }
     //logica para gestionar arbitros
-<<<<<<< Updated upstream
-
-=======
     
->>>>>>> Stashed changes
     private void gestionarPartidos() {
         int opcion;
         do {
@@ -128,8 +124,6 @@ public class Controlador {
     }
     //logica para gestionar partidos
 
-<<<<<<< Updated upstream
-=======
     private void registrarNuevoPartido() {
         List<Equipo> equipos = campeonato.getEquipos();
 
@@ -167,5 +161,5 @@ public class Controlador {
     campeonato.agregarPartido(partido);
 
     vista.mostrarMensaje("Partido registrado correctamente.");
->>>>>>> Stashed changes
+    }
 }
