@@ -100,6 +100,39 @@ public class Controlador {
             vista.mostrarMensaje("Número de equipo inválido.");
         }
     }
+
+    private void verDetallesEquipo() {
+    if (campeonato.getEquipos().isEmpty()) {
+        vista.mostrarMensaje("No hay equipos registrados para ver detalles.");
+        return;
+    }
+
+    vista.mostrarListaEquipos(campeonato.getEquipos());
+    int indiceEquipo = vista.pedirInt("Seleccione el número del equipo para ver sus detalles: ") - 1;
+
+    if (indiceEquipo < 0 || indiceEquipo >= campeonato.getEquipos().size()) {
+        vista.mostrarMensaje("Número de equipo inválido.");
+        return;
+    }
+    Equipo equipo = campeonato.getEquipos().get(indiceEquipo);
+
+    vista.mostrarMensaje("\n--- Detalles del Equipo: " + equipo.getNombre() + " ---");
+    vista.mostrarMensaje("Entrenador: " + (equipo.getEntrenador() != null ? equipo.getEntrenador().getNombre() : "N/A"));
+    vista.mostrarMensaje("Partidos Jugados: " + equipo.getPartidosJugados());
+    vista.mostrarMensaje("Goles a Favor: " + equipo.getGolesA_Favor());
+    vista.mostrarMensaje("Goles en Contra: " + equipo.getGolesEnContra());
+    vista.mostrarMensaje("Puntaje: " + equipo.getPuntaje());
+    vista.mostrarMensaje("Jugadores:");
+    if (equipo.getJugadores().isEmpty()) {
+        vista.mostrarMensaje("  No hay jugadores en este equipo.");
+    } else {
+        for (Jugador jugador : equipo.getJugadores()) {
+            vista.mostrarMensaje("  - " + jugador.getNombre() + 
+                " (Camiseta: " + jugador.getNroCamiseta() + 
+                ", Goles: " + jugador.getGoles() + ")");
+        }
+    }
+}
     
     private void gestionarArbitros() {
         int opcion;

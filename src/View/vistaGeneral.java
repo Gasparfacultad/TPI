@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import Models.Campeonato;
 import Models.Equipo;
+import Models.Jugador;
 
 public class vistaGeneral {
     private Scanner scanner;
