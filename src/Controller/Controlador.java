@@ -1,8 +1,12 @@
 package Controller;
 
+import java.util.List;
+
 import Models.Campeonato;
 import Models.Entrenador;
 import Models.Equipo;
+import Models.Jugador;
+import Models.Partido;
 import View.vistaGeneral;
 
 public class Controlador {
@@ -75,9 +79,28 @@ public class Controlador {
         campeonato.addEquipo(nuevoEquipo);
         vista.mostrarMensaje("Equipo '" + nombre + "' creado exitosamente.");
     }
-    private void añadirJugadorAEquipo(){
-        
+    
+    private void añadirJugadorAEquipo() {
+        if (campeonato.getEquipos().isEmpty()) {
+            vista.mostrarMensaje("No hay equipos registrados para añadir jugadores.");
+            return;
+        }
+        int indiceEquipo = vista.pedirInt("Seleccione el número del equipo al que desea añadir un jugador: ") - 1;
+
+        if (indiceEquipo >= 0 && indiceEquipo < campeonato.getEquipos().size()) {
+            Equipo equipoSeleccionado = campeonato.getEquipos().get(indiceEquipo);
+            
+            String nombreJugador = vista.pedirString("Ingrese el nombre del jugador: ");
+            String nroCamiseta = vista.pedirString("Ingrese el número de camiseta del jugador: ");
+            
+            Jugador nuevoJugador = new Jugador(nombreJugador, nroCamiseta, 0); 
+            equipoSeleccionado.addJugador(nuevoJugador);
+            vista.mostrarMensaje("Jugador '" + nombreJugador + "' añadido a '" + equipoSeleccionado.getNombre() + "' exitosamente.");
+        } else {
+            vista.mostrarMensaje("Número de equipo inválido.");
+        }
     }
+    
     private void gestionarArbitros() {
         int opcion;
         do {
