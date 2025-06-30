@@ -3,6 +3,7 @@ package View;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import Models.Arbitro;
 import Models.Campeonato;
 import Models.Equipo;
 import Models.Jugador;
@@ -68,6 +69,16 @@ public class vistaGeneral {
         }
         for (int i = 0; i < equipos.size(); i++) {
             System.out.println((i + 1) + ". " + equipos.get(i).getNombre());
+        }
+    }
+    public void mostrarListaArbitros(ArrayList<Arbitro> arbitros) {
+        if (arbitros.isEmpty()) {
+            mostrarMensaje("No hay árbitros registrados.");
+            return;
+        }
+        mostrarMensaje("\n--- Lista de Árbitros ---");
+        for (int i = 0; i < arbitros.size(); i++) {
+            mostrarMensaje((i + 1) + ". " + arbitros.get(i).getNombre() + " (Partidos Dirigidos: " + arbitros.get(i).getPartidosDirigidos() + ")");
         }
     }
 

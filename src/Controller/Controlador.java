@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Arbitro;
 import Models.Campeonato;
 import Models.Entrenador;
 import Models.Equipo;
@@ -157,6 +158,20 @@ public class Controlador {
         } while (opcion != 3);
     }
     //logica para gestionar arbitros
+    
+    private ArrayList<Arbitro> arbitrosRegistrados = new ArrayList<>();
+
+    private void crearArbitro() {
+        String nombreArbitro = vista.pedirString("Ingrese el nombre del árbitro: ");
+        Arbitro nuevoArbitro = new Arbitro(nombreArbitro, 0); 
+        arbitrosRegistrados.add(nuevoArbitro);
+        vista.mostrarMensaje("Árbitro '" + nombreArbitro + "' creado exitosamente.");
+    }
+
+    private ArrayList<Arbitro> getArbitrosRegistrados() {
+        return arbitrosRegistrados;
+    }
+        
     
     private void gestionarPartidos() {
         int opcion;
