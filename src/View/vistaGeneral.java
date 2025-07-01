@@ -7,6 +7,7 @@ import Models.Arbitro;
 import Models.Campeonato;
 import Models.Equipo;
 import Models.Jugador;
+import Models.Partido;
 
 public class vistaGeneral {
     private Scanner scanner;
@@ -79,6 +80,18 @@ public class vistaGeneral {
         mostrarMensaje("\n--- Lista de Árbitros ---");
         for (int i = 0; i < arbitros.size(); i++) {
             mostrarMensaje((i + 1) + ". " + arbitros.get(i).getNombre() + " (Partidos Dirigidos: " + arbitros.get(i).getPartidosDirigidos() + ")");
+        }
+    }
+
+    public void mostrarListaPartidos(ArrayList<Partido> partidos) {
+        if (partidos.isEmpty()) {
+            mostrarMensaje("No hay partidos registrados.");
+            return;
+        }
+        mostrarMensaje("\n--- Lista de Partidos Jugados ---");
+        for (int i = 0; i < partidos.size(); i++) {
+            Partido p = partidos.get(i);
+            mostrarMensaje((i + 1) + ". " + p.getEquipoLocal().getNombre() + " " + p.getGolesLocal() + " - " + p.getGolesVisitante() + " " + p.getEquipoVisitante().getNombre() + " (Árbitro: " + p.getArbitro().getNombre() + ")");
         }
     }
 
