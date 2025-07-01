@@ -197,41 +197,48 @@ public class Controlador {
     //logica para gestionar partidos
 
     private void registrarNuevoPartido() {
-        ArrayList<Equipo> equipos = campeonato.getEquipos();
+        if (campeonato.getEquipos().size() < 2) {
+            vista.mostrarMensaje("Se necesitan al menos dos equipos para registrar un partido.");
+            return;
+        }
+        if (arbitrosRegistrados.isEmpty()) {
+            vista.mostrarMensaje("No hay árbitros registrados para dirigir un partido.");
+            return;
+        }
 
-        if (equipos.size() < 2) {
-            vista.mostrarMensaje("No hay suficientes equipos registrados para jugar un partido.");
-        return;
-    }
+        vista.mostrarListaEquipos(campeonato.getEquipos());
+        int indiceLocal = vista.pedirInt("Seleccione el número del equipo LOCAL: ") - 1;
+        int indiceVisitante = vista.pedirInt("Seleccione el número del equipo VISITANTE: ") - 1;
 
-    
-    vista.mostrarListaEquipos(equipos);
-    // Selección del primer equipo
-    int indiceLocal = vista.pedirInt("Seleccione el número del equipo LOCAL: ") - 1;
+        if (indiceLocal < 0 || indiceLocal >= campeonato.getEquipos().size() ||
+            indiceVisitante < 0 || indiceVisitante >= campeonato.getEquipos().size()) {
+            vista.mostrarMensaje("Selección de equipo inválida.");
+            return;
+        }
 
-    if (indiceLocal < 0 || indiceLocal >= equipos.size()) {
-        vista.mostrarMensaje("Selección inválida.");
-        return;
-    }
+        if (indiceLocal == indiceVisitante) {
+            vista.mostrarMensaje("Un equipo no puede jugar contra sí mismo. Por favor, seleccione equipos diferentes.");
+            return;
+        }
 
-    // Selección del segundo equipo
-    int indiceVisitante = vista.pedirInt("Seleccione el número del equipo VISITANTE: ") - 1;
-    if (indiceVisitante < 0 || indiceVisitante >= equipos.size() || indiceVisitante == indiceLocal) {
-        vista.mostrarMensaje("Selección inválida o equipo duplicado.");
-        return;
-    }
+        Equipo equipoLocal = campeonato.getEquipos().get(indiceLocal);
+        Equipo equipoVisitante = campeonato.getEquipos().get(indiceVisitante);
 
-    Equipo local = equipos.get(indiceLocal);
-    Equipo visitante = equipos.get(indiceVisitante);
+        vista.mostrarListaArbitros(arbitrosRegistrados);
+        int indiceArbitro = vista.pedirInt("Seleccione el número del árbitro para el partido: ") - 1;
 
-    // Ingreso de goles
-    int golesLocal = vista.pedirInt("Ingrese los goles del equipo " + local.getNombre() + ": ");
-    int golesVisitante = vista.pedirInt("Ingrese los goles del equipo " + visitante.getNombre() + ": ");
+        if (indiceArbitro < 0 || indiceArbitro >= arbitrosRegistrados.size()) {
+            vista.mostrarMensaje("Selección de árbitro inválida.");
+            return;
+        }
+        Arbitro arbitroSeleccionado = arbitrosRegistrados.get(indiceArbitro);
 
-    // Crear y registrar el partido
-    Partido partido = new Partido(null, local, visitante, golesLocal, golesVisitante);
-    campeonato.addPartido(partido);
+        int golesLocal = vista.pedirInt("Ingrese los goles del equipo LOCAL (" + equipoLocal.getNombre() + "): ");
+        int golesVisitante = vista.pedirInt("Ingrese los goles del equipo VISITANTE (" + equipoVisitante.getNombre() + "): ");
 
-    vista.mostrarMensaje("Partido registrado correctamente.");
+        Partido nuevoPartido = new Partido(arbitroSeleccionado, equipoLocal, equipoVisitante, golesLocal, golesVisitante);
+        nuevoPartido.finalizarPartido(); // Esto actualiza las estadísticas de los equipos y el árbitro
+        campeonato.addPartido(nuevoPartido);
+        vista.mostrarMensaje("Partido registrado y estadísticas actualizadas exitosamente.");
     }
 }

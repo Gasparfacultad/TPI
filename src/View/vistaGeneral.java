@@ -94,5 +94,4 @@ public class vistaGeneral {
             mostrarMensaje((i + 1) + ". " + p.getEquipoLocal().getNombre() + " " + p.getGolesLocal() + " - " + p.getGolesVisitante() + " " + p.getEquipoVisitante().getNombre() + " (Árbitro: " + p.getArbitro().getNombre() + ")");
         }
     }
-
 }
