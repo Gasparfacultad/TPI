@@ -1,11 +1,10 @@
 package Models;
-
 import java.util.ArrayList;
 
 public class Campeonato {
     private String nombre;
-    private ArrayList<Equipo> equipos;
-    private ArrayList<Partido> partidosJugados;
+    private ArrayList<Equipo> equipos; 
+    private ArrayList<Partido> partidosJugados; 
 
     public Campeonato(){
         this.equipos = new ArrayList<>();
@@ -36,7 +35,7 @@ public class Campeonato {
         return this.equipos;
     }
 
-    public void setEquiposParticipantes(ArrayList<Equipo> equipos) {
+    public void setEquipos(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
 

@@ -1,17 +1,25 @@
 package Models;
 
 public class Arbitro {
+    private int id;
     private String nombre;
     private int partidosDirigidos;
 
     public Arbitro(){
     }
 
-    public Arbitro(String nombre, int partidosDirigidos) {
+    public Arbitro(int id, String nombre, int partidosDirigidos) {
+        this.id = id;
         this.nombre = nombre;
         this.partidosDirigidos = partidosDirigidos;
     }
 
+    public int getId() {
+        return this.id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return this.nombre;

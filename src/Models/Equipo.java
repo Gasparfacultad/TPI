@@ -2,6 +2,7 @@ package Models;
 import java.util.ArrayList;
 
 public class Equipo {
+    private int id;
     private String nombre;
     private Entrenador entrenador;
     private ArrayList<Jugador> jugadores;
@@ -14,7 +15,8 @@ public class Equipo {
         this.jugadores = new ArrayList<>();
     }
 
-    public Equipo(String nombre, Entrenador entrenador, ArrayList<Jugador> jugadores, int partidosJugados, int golesA_Favor, int golesEnContra, int puntaje) {
+    public Equipo(int id, String nombre, Entrenador entrenador, ArrayList<Jugador> jugadores, int partidosJugados, int golesA_Favor, int golesEnContra, int puntaje) {
+        this.id = id;
         this.nombre = nombre;
         this.entrenador = entrenador;
         this.jugadores = jugadores;
@@ -24,6 +26,7 @@ public class Equipo {
         this.puntaje = puntaje;
     }
 
+    
     public Equipo(String nombre, Entrenador entrenador) {
         this.nombre = nombre;
         this.entrenador = entrenador;
@@ -32,6 +35,13 @@ public class Equipo {
         this.golesA_Favor = 0;
         this.golesEnContra = 0;
         this.puntaje = 0;
+    }
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -106,13 +116,13 @@ public class Equipo {
     @Override
     public String toString() {
         return "{" +
-            " nombre = '" + getNombre() + "'" +
-            ", entrenador = '" + entrenador.getNombre() +
-            ", jugadores = " + getJugadores().size() + " jugadores" +
-            ", partidosJugados = '" + getPartidosJugados() + "'" +
-            ", golesA_Favor = '" + getGolesA_Favor() + "'" +
-            ", golesEnContra = '" + getGolesEnContra() + "'" +
-            ", puntaje = '" + getPuntaje() + "'" +
+            " nombre='" + getNombre() + "'" +
+            ", entrenador='" + (entrenador != null ? entrenador.getNombre() : "N/A") + "'" +
+            ", jugadores=" + getJugadores().size() + " jugadores" +
+            ", partidosJugados='" + getPartidosJugados() + "'" +
+            ", golesA_Favor='" + getGolesA_Favor() + "'" +
+            ", golesEnContra='" + getGolesEnContra() + "'" +
+            ", puntaje='" + getPuntaje() + "'" +
             "}";
     }
 }

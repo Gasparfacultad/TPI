@@ -3,7 +3,7 @@ package Models;
 public class Partido {
     private Arbitro arbitro;
     private Equipo equipoLocal;
-    private Equipo equipoVisitante;
+    private Equipo equipoVisitante; 
     private int golesLocal;
     private int golesVisitante;
     
@@ -59,13 +59,15 @@ public class Partido {
     }
 
     public void finalizarPartido() {
+        
         if (this.arbitro != null) {
             this.arbitro.setPartidosDirigidos(this.arbitro.getPartidosDirigidos() + 1);
         }
 
+        
         if (this.equipoLocal != null) {
             int puntosLocal = 0;
-            if (golesLocal > golesVisitante) {
+            if (golesLocal > golesVisitante) { 
                 puntosLocal = 3;
             } else if (golesLocal == golesVisitante) { 
                 puntosLocal = 1;
@@ -73,11 +75,12 @@ public class Partido {
             this.equipoLocal.actualizarEstadisticas(golesLocal, golesVisitante, puntosLocal);
         }
 
+        
         if (this.equipoVisitante != null) {
             int puntosVisitante = 0;
-            if (golesVisitante > golesLocal) {
+            if (golesVisitante > golesLocal) { 
                 puntosVisitante = 3;
-            } else if (golesLocal == golesVisitante) {
+            } else if (golesLocal == golesVisitante) { 
                 puntosVisitante = 1;
             }
             this.equipoVisitante.actualizarEstadisticas(golesVisitante, golesLocal, puntosVisitante);
